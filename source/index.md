@@ -540,7 +540,7 @@ See [Reservation](#making-a-reservation)
 
 <aside class="warning">Reservations cannot be moved across restaurants or systems. In order to move a reservation it must first be cancelled and then a new one made in the target restaurant.</aside>
 
-##Receiving Cancels From Opentable
+## Receiving Cancels From Opentable
 
 Opentable will POST a cancel  reservation message, containing the RID and confirmation_number of the reservation.
 
