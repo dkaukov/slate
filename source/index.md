@@ -596,11 +596,11 @@ SequenceNumber | Int32 | Increasing Sequence Number for the update | Required
 ServerName | String | Server Name | Optional
 UpdatedDT_UTC | String | Update Date in UTC | Required
 
-###Response Entity
+### Response Entity
 None.
 
 
-###Response Status Codes
+### Response Status Codes
 Status Code | Description
 ------------ | ----------
 200 | OK
@@ -608,7 +608,7 @@ Status Code | Description
 404 | DB is unavailable, try again later. 
 
 
-#Integration Testing
+# Integration Testing
 These APIs act as the entry point from the consumer's side when making a reservation.
 
 Hosts:
@@ -619,7 +619,7 @@ PP: `reservation-na-pp.otenv.com`
 
 Prod: `reservation-na-sc.otenv.com`
 
-##Test Locking a Reservation
+## Test Locking a Reservation
 
 > POST :: `/reservation/v1/restaurants/<rid>/slotlocks`
 
@@ -644,18 +644,18 @@ Prod: `reservation-na-sc.otenv.com`
   "errorMessage": null
 }
 ```
-###Request URL Parameters
+### Request URL Parameters
 **rid**: The unique ID of the restaurant
 
 
-###Request Entity
+### Request Entity
 
 Member | Type | Description | Usage
 ------- | ---- |------------ | -----
 ReservationDateTime | string | ISO format Date and Time string in the form: "YYYY-MM-DDTHH:mm" | Required
 PartySize | integer | Size of dining party | Required
 
-###Response Entity
+### Response Entity
 
 Member | Type | Description
 ------- | ---- |---------
@@ -666,7 +666,7 @@ slotLockId | integer | Numeric slot lock id which can be used to make a booking 
 offerSlotLockId | integer | Defaults to 0, can be ignored
 errorMessage | string | Detailed error message if exists
 
-###Response Status Codes
+### Response Status Codes
 
 Status Code | Description
 ----------- | -----------
@@ -674,7 +674,7 @@ Status Code | Description
 404 | Not found
 409 | Conflict
 
-##Test Making a Reservation
+## Test Making a Reservation
 
 > POST  :: `/reservation/v1/restaurants/<rid>/reservations`
 
@@ -718,10 +718,10 @@ Status Code | Description
 }
 ```
 
-###Request URL Parameters
+### Request URL Parameters
 **rid**: The unique ID of the restaurant
 
-###Request Entity
+### Request Entity
 
 Member | Type | Description | Usage
 ------- | ---- |------------ | -----
@@ -735,7 +735,7 @@ DinerPhone | struct | Contact phone for the diner.  Contains the string-valued f
 PointsType | string | Either "POP", "Standard", or "None" (one of the PointsType values returned by the availability service.) This is used to specify the maximum allowed points for the reservation. Note that it may not be possible for the service to award the maximum points; For example, if PointsType = "POP" but the reservation time is not POP, standard points are awarded. | Required
 DinerReservationNotes | string | Notes from the diner to the restaurant. | Optional
 
-###Response Entity
+### Response Entity
 
 Member | Type | Description
 ------- | ---- |---------
@@ -746,7 +746,7 @@ offerSlotLockId | integer | Defaults to 0, can be ignored
 errorMessage | string | Detailed error message if exists
 confirmationNumber |integer | numeric identifier for the reservation
 
-###Response Status Codes
+### Response Status Codes
 
 Status Code | Description
 ----------- | -----------
@@ -754,7 +754,7 @@ Status Code | Description
 404 | Not found
 409 | Conflict
 
-##Test Canceling a Reservation
+## Test Canceling a Reservation
 
 > PUT `/reservation/v1/restaurants/<rid>/confirmations/<confirmation_number>`
 
