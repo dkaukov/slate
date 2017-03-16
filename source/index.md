@@ -582,6 +582,7 @@ Partner systems should perform a POST to the OpenTable reservation system should
   "UpdateDT_UTC" : "2015-06-17 20:35"
 }
 ```
+
 ###Request Entity
 
 Member | Type | Description | Usage
