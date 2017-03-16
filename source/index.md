@@ -401,7 +401,7 @@ OpenTable will call the partner API whenever a diner is attempting to book a res
 
 > Opentable POST :: https://&lt;partner_make_reservation_url&gt;
 
-```
+```json
 {
   "rid": 888,
   "date_time": "2013-05-09T18:00",
@@ -425,7 +425,7 @@ OpenTable will call the partner API whenever a diner is attempting to book a res
 
 > Partner Response :: HTTP 200 OK
 
-```
+```json
 {
   "confirmation_number": 1,
   "rid": 888,
@@ -491,7 +491,7 @@ OpenTable will POST a reservation update message should any of the following res
 
 > OpenTable POST :: https://&lt;partner_update_reservation_url&gt;
 
-```
+```json
 {
   "rid": 888,
   "date_time": "2013-05-09T18:00",
@@ -516,7 +516,7 @@ OpenTable will POST a reservation update message should any of the following res
 
 > Partner Response :: HTTP 200 OK
 
-```
+```json
 {
   "confirmation_number": 556,
   "rid": 888,
@@ -544,7 +544,7 @@ Opentable will POST a cancel  reservation message, containing the RID and confir
 
 > OpenTable POST :: https://&lt;partner_cancel_reservation_url&gt;
 
-```
+```json
 {
   "rid": 888,
   "confirmation_number": 1
@@ -553,7 +553,7 @@ Opentable will POST a cancel  reservation message, containing the RID and confir
 
 > Partner Response
 
-```
+```json
 {
   "rid": 888,
   "confirmation_number": 1
@@ -570,7 +570,7 @@ Partner systems should perform a POST to the OpenTable reservation system should
 
 > Partner POST :: https://restaurant-api.opentable.com/resoupdate/resoupdate
 
-```
+```json
 {
   "ConfirmationNumber" : 123,
   "DateTime" : "2015-07-03 19:00",
@@ -627,21 +627,21 @@ This API is designed to trigger direct restaurant communication to determine if 
 
 > Partner Response :: HTTP 200 OK
 
-```
- {
+```json
+{
     "rid": 1,
     "online": true
- }
+}
 
 ```
 Any other response code would indicate check failure. There is special case when rid is incorrectly provisioned and it is not exists in the partner's database. To indicate such case, partner could implement the following response:
 
 > Partner Response :: HTTP 400 Bad request
 
-```
- {
-     "error": "ECannotFindRestaurant"
- }
+```json
+{
+    "error": "ECannotFindRestaurant"
+}
 
 ```
 
