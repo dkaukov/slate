@@ -254,10 +254,14 @@ Member | Type | Description
 rid | Integer | OpenTable RID.
 date | Date | The local date in ISO 8601
 sequence_id | Integer | Sequence id is like a version number and is used to decide whether to overwrite previously received availability. When an availability update is received, the provided sequence id is compared with the highest sequence id for the combination of (rid, date, party size) that was received so far. If the new sequence id is higher, availability is updated; otherwise the update is ignored.
-party_sizes | Map | Map of party sizes and their corresponding availability times in HH:mm 24-hour format. Only availabilities specified here will be updated.
+party_sizes | Map | Map of party sizes and their corresponding availability times in HH:mm 24-hour format. The mm can have values: 00, 15, 30, 45. Only availabilities specified here will be updated.
 
 <aside class="notice">
 Only party sizes specified in the request are processed. To clear availability for specific party size, this party size should be included in request, with empty list of times. In the example, the party size "3" would be cleared and Availability for party sizes 4-20 would not be changed.
+</aside>
+
+<aside class="notice">
+OpenTable stores in 15 minutes intervals.
 </aside>
 
 ### V1 Publishing Availability
