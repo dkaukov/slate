@@ -283,7 +283,7 @@ Only party sizes specified in the request are processed. To clear availability f
   ]
 ```
 > OpenTable response :: HTTP 1.1 200 OK
-```
+
 ### HTTP Request
 
 `POST https://restaurant-api.opentable.com/api/v1/<partner_id>/availability`
