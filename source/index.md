@@ -501,7 +501,7 @@ OpenTable will POST a reservation update message should any of the following res
     "first_name": "Ernest",
     "last_name": "Rivas",
     "transactional_email": "erivas@abc.com",
-    "opt_in_for_restaurant_marketing": true
+    "opt_in_for_restaurant_marketing": true,
     "phone": {
       "number": "555.666.7777",
       "type": "Mobile",
@@ -623,7 +623,7 @@ This API is designed to trigger direct restaurant communication to determine if 
 
 ### Receiving FRN Recovery Checks from OpenTable
 
-> OpenTable GET :: https://<partner_frn_url>?rid=<rid>
+> OpenTable GET :: https://&lt;partner_frn_url&gt;?rid=<rid>
 
 > Partner Response :: HTTP 200 OK
 
