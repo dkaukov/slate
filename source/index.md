@@ -608,6 +608,12 @@ Status Code | Description
 404 | DB is unavailable, try again later. 
 
 
+
+## Echo backs
+
+Echo-backs are designed to prevent "ghost" bookings in a partner's reservation system if there is a failure in the OT booking process after the Make has been sent to a partner. The idea is to issue the [Reservation Update](#sending-updates-to-opentable) API call after a reservation is saved to the Partner's database and processing of the "Make" call is finished (response is sent to OpenTable). This will allow OpenTable to check the existence of the booking confirmation number against it's internal database and in the case where a booking does not exist, OpenTable will issue a cancel request.
+
+
 # Integration Testing
 These APIs act as the entry point from the consumer's side when making a reservation.
 
