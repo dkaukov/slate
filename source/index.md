@@ -221,6 +221,8 @@ Partners specify multiple values for the time field in order to efficiently repr
 
 Once availability for a day and party size is posted, it can be updated by posting another availability for the same date and party size, but with different times. To remove all availability for a day, send an empty array of time.
 
+OpenTable stores in 15 minutes intervals.
+
 <aside class="notice">
 For the availability endpoint all dates and times should be sent in restaurant local time.
 </aside>
@@ -258,8 +260,6 @@ party_sizes | Map | Map of party sizes and their corresponding availability time
 
 <aside class="notice">
 Only party sizes specified in the request are processed. To clear availability for specific party size, this party size should be included in request, with empty list of times. In the example, the party size "3" would be cleared and Availability for party sizes 4-20 would not be changed.
-
-OpenTable stores in 15 minutes intervals.
 </aside>
 
 ### V1 Publishing Availability
