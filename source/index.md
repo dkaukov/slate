@@ -583,7 +583,7 @@ Partner systems should perform a POST to the OpenTable reservation system should
 }
 ```
 
-###Request Entity
+### Request Entity
 
 Member | Type | Description | Usage
 ------- | ---- |------------ | -----
