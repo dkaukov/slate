@@ -487,7 +487,7 @@ CANCELED | The reservation has been canceled.
 
 ## Receiving Updates from OpenTable
 
-OpenTable will PUT a reservation update message should any of the following reservation fields change.
+OpenTable will POST a reservation update message should any of the following reservation fields change.
 
 > OpenTable POST :: https://&lt;partner_update_reservation_url&gt;
 
@@ -613,6 +613,37 @@ Status Code | Description
 
 Echo-backs are designed to prevent "ghost" bookings in a partner's reservation system if there is a failure in the OT booking process after the Make has been sent to a partner. The idea is to issue the [Reservation Update](#sending-updates-to-opentable) API call after a reservation is saved to the Partner's database and processing of the "Make" call is finished (response is sent to OpenTable). This will allow OpenTable to check the existence of the booking confirmation number against it's internal database and in the case where a booking does not exist, OpenTable will issue a cancel request.
 
+## FRN Recovery
+
+This API is designed to trigger direct restaurant communication to determine if the given restaurant is online and reachable. This is the workflow:
+* OpenTable tracks failures of the Lock/Make/Update/Cancel API calls per each RID
+* After 3 failures in 5 minutes, OpenTable marks this restaurant with an "FRN" (False Reserve Now) state. This removes the ability to book this restaurant from OpenTable website.
+* For FRN restaurants, OpenTable periodically calls the "FRN recovery" endpoint to check if the restaurant is back online.
+* In the case "FRN Recovery" returns success,  OpenTable removes the FRN status from this restaurant and the restaurant becomes bookable.
+
+### Receiving FRN Recovery Checks from OpenTable
+
+> OpenTable GET :: https://<partner_frn_url>?rid=<rid>
+
+> Partner Response :: HTTP 200 OK
+
+```
+ {
+    "rid": 1,
+    "online": true
+ }
+
+```
+Any other response code would indicate check failure. There is special case when rid is incorrectly provisioned and it is not exists in the partner's database. To indicate such case, partner could implement the following response:
+
+> Partner Response :: HTTP 400 Bad request
+
+```
+ {
+     "error": "ECannotFindRestaurant"
+ }
+
+```
 
 # Integration Testing
 These APIs act as the entry point from the consumer's side when making a reservation.
