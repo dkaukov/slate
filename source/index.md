@@ -257,9 +257,8 @@ sequence_id | Integer | Sequence id is like a version number and is used to deci
 party_sizes | Map | Map of party sizes and their corresponding availability times in HH:mm 24-hour format. Only availabilities specified here will be updated.
 
 <aside class="notice">
-Only party sizes specified in the request are processed. To clear availability for specific party size, this party size should be included in request, with empty ;ist of times. In the example, the party size "3" would be cleared and Availability for party sizes 4-20 would not be changed.
+Only party sizes specified in the request are processed. To clear availability for specific party size, this party size should be included in request, with empty list of times. In the example, the party size "3" would be cleared and Availability for party sizes 4-20 would not be changed.
 </aside>
-
 
 ### V1 Publishing Availability
 
@@ -285,7 +284,6 @@ Only party sizes specified in the request are processed. To clear availability f
 ```
 > OpenTable response :: HTTP 1.1 200 OK
 ```
-
 ### HTTP Request
 
 `POST https://restaurant-api.opentable.com/api/v1/<partner_id>/availability`
